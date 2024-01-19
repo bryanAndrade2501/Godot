@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv6wekth8msxw"]
+[gd_scene load_steps=11 format=3 uid="uid://bv6wekth8msxw"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_adt2g"]
 [ext_resource type="PackedScene" uid="uid://v7dvu4kda1hq" path="res://scenes/player.tscn" id="2_nu48x"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://3t2hoxiou2ue" path="res://scenes/spike_ball.tscn" id="7_0vgix"]
 [ext_resource type="PackedScene" uid="uid://twh8a4cntu21" path="res://scenes/tile_map.tscn" id="7_vxdw7"]
 [ext_resource type="PackedScene" uid="uid://cp0cjo8mutb8n" path="res://scenes/background.tscn" id="8_l2d23"]
+[ext_resource type="Texture2D" uid="uid://jfmbrdgdftru" path="res://assets/parallax/parallax-04.png" id="9_o0qtu"]
+[ext_resource type="PackedScene" uid="uid://1riewc63tyd7" path="res://scenes/start.tscn" id="10_eqhom"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_adt2g")
@@ -48,5 +50,22 @@ layer_0/tile_data = PackedInt32Array(589828, 458752, 0, 589829, 458752, 0, 58983
 
 [node name="Player" parent="." instance=ExtResource("2_nu48x")]
 position = Vector2(-95, -38)
+
+[node name="foreground" type="ParallaxBackground" parent="."]
+layer = 100
+visible = false
+offset = Vector2(0, 75)
+transform = Transform2D(1, 0, 0, 1, 0, 75)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="foreground"]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(1400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="foreground/ParallaxLayer"]
+position = Vector2(8, -69)
+texture = ExtResource("9_o0qtu")
+
+[node name="Start" parent="." instance=ExtResource("10_eqhom")]
+position = Vector2(-446, -25)
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]
