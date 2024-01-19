@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv6wekth8msxw"]
+
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_adt2g"]
+[ext_resource type="PackedScene" uid="uid://v7dvu4kda1hq" path="res://scenes/player.tscn" id="2_nu48x"]
+[ext_resource type="PackedScene" uid="uid://xb5rqphbb3d5" path="res://scenes/ground.tscn" id="3_5eenj"]
+[ext_resource type="PackedScene" uid="uid://dbmjrxxkr7xn8" path="res://scenes/deathzone.tscn" id="4_4xuum"]
+[ext_resource type="PackedScene" uid="uid://biq37xm6mqcac" path="res://scenes/jump_pad.tscn" id="5_6pp3c"]
+[ext_resource type="PackedScene" uid="uid://dy0tgwfsc16s8" path="res://scenes/saw.tscn" id="6_woxpu"]
+[ext_resource type="PackedScene" uid="uid://3t2hoxiou2ue" path="res://scenes/spike_ball.tscn" id="7_0vgix"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_adt2g")
+
+[node name="Player" parent="." instance=ExtResource("2_nu48x")]
+position = Vector2(-95, -38)
+
+[node name="Ground" parent="." instance=ExtResource("3_5eenj")]
+position = Vector2(-214, 68)
+scale = Vector2(1, 0.893951)
+
+[node name="Deathzone" parent="." instance=ExtResource("4_4xuum")]
+position = Vector2(-235, 257)
+scale = Vector2(1, 0.893951)
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(-82, -48)
+
+[node name="traps" type="Node2D" parent="."]
+
+[node name="Saw" parent="traps" instance=ExtResource("6_woxpu")]
+position = Vector2(-207, 56)
+
+[node name="SpikeBall" parent="traps" instance=ExtResource("7_0vgix")]
+position = Vector2(268, 45)
+
+[node name="jumpads" type="Node2D" parent="."]
+
+[node name="JumpPad" parent="jumpads" instance=ExtResource("5_6pp3c")]
+position = Vector2(47, 56)
+
+[node name="JumpPad2" parent="jumpads" instance=ExtResource("5_6pp3c")]
+position = Vector2(172, 58)
+jumpForce = 400
+
+[connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]

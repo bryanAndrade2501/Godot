@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dql112q0i60xe"]
+
+[ext_resource type="PackedScene" uid="uid://dthrv5x82q2ox" path="res://scenes/player.tscn" id="1_fu0fu"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_h6qky"]
+[ext_resource type="PackedScene" uid="uid://dyoc7n2qmneed" path="res://scenes/maze.tscn" id="2_df18a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ng610"]
+line_spacing = 6.0
+
+[node name="Level1" type="Node2D"]
+position = Vector2(-42, -8)
+script = ExtResource("1_h6qky")
+
+[node name="Player" parent="." instance=ExtResource("1_fu0fu")]
+position = Vector2(181, 143)
+
+[node name="maze" parent="." instance=ExtResource("2_df18a")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1087.0
+offset_top = 284.0
+offset_right = 1127.0
+offset_bottom = 310.0
+rotation = 0.653225
+text = "FINISH"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 103.0
+offset_top = 109.0
+offset_right = 151.0
+offset_bottom = 135.0
+rotation = -0.967181
+text = "START"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -69.0
+offset_top = -55.0
+offset_right = 440.0
+offset_bottom = 119.0
+text = "BIENVENIDO A UFO RACING
+PARA PODER CONTROLAR LA NAVE PULSE LAS TECLAS SIGUIENTES
+ARRIBA -> W
+ABAJO -> S
+DERECHA -> D
+IZQUIERDA -> A"
+label_settings = SubResource("LabelSettings_ng610")
+
+[connection signal="body_exited" from="maze" to="." method="_on_maze_body_exited"]
