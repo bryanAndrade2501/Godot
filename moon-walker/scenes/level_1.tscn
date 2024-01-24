@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bv6wekth8msxw"]
+[gd_scene load_steps=13 format=3 uid="uid://bv6wekth8msxw"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_adt2g"]
+[ext_resource type="PackedScene" uid="uid://cae68vnysdgvn" path="res://scenes/level_2.tscn" id="2_jipc1"]
 [ext_resource type="PackedScene" uid="uid://v7dvu4kda1hq" path="res://scenes/player.tscn" id="2_nu48x"]
 [ext_resource type="PackedScene" uid="uid://dbmjrxxkr7xn8" path="res://scenes/deathzone.tscn" id="4_4xuum"]
 [ext_resource type="PackedScene" uid="uid://biq37xm6mqcac" path="res://scenes/jump_pad.tscn" id="5_6pp3c"]
@@ -10,11 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://cp0cjo8mutb8n" path="res://scenes/background.tscn" id="8_l2d23"]
 [ext_resource type="Texture2D" uid="uid://jfmbrdgdftru" path="res://assets/parallax/parallax-04.png" id="9_o0qtu"]
 [ext_resource type="PackedScene" uid="uid://1riewc63tyd7" path="res://scenes/start.tscn" id="10_eqhom"]
+[ext_resource type="PackedScene" uid="uid://did5wo5i1j6vv" path="res://scenes/exit_area.tscn" id="11_es3t0"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_adt2g")
+next_level = ExtResource("2_jipc1")
 
 [node name="Background" parent="." instance=ExtResource("8_l2d23")]
+
+[node name="ExitArea" parent="." instance=ExtResource("11_es3t0")]
+position = Vector2(589, -103)
 
 [node name="Deathzone" parent="." instance=ExtResource("4_4xuum")]
 position = Vector2(-237, 273)
@@ -67,5 +73,3 @@ texture = ExtResource("9_o0qtu")
 
 [node name="Start" parent="." instance=ExtResource("10_eqhom")]
 position = Vector2(-446, -25)
-
-[connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]

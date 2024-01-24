@@ -7,6 +7,7 @@ class_name Player
 @export var speed = 150
 @export var jumpforce = 200
 
+var active = true
 #func _process(delta):
 #	if Input.is_action_pressed("move_right"):
 #		player.play("run")
@@ -16,28 +17,36 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		if velocity.y > 700:
 			velocity.y = 700
-		
-	if Input.is_action_just_pressed("jump") && is_on_floor():
-		#velocity.y -= jumpforce
-		jump(jumpforce)
 	
- #retorna -1 cuando la accion se ejecuta para el primer argumento
-#retorna 1 cuando la accion se ejecuta para el segundo argumento		
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = 0
+	if active == true:
 	
-#	if direction == 1:
-#		player.flip_h = false
-#	elif direction == -1:
-#		player.flip_h = true
-	if direction != 0:
-		player.flip_h = (direction == -1 )
+		if Input.is_action_just_pressed("jump") && is_on_floor():
+			#velocity.y -= jumpforce
+			jump(jumpforce)
+		
+	 #retorna -1 cuando la accion se ejecuta para el primer argumento
+	#retorna 1 cuando la accion se ejecuta para el segundo argumento		
+		direction = Input.get_axis("move_left", "move_right")
+		
+	#	if direction == 1:
+	#		player.flip_h = false
+	#	elif direction == -1:
+	#		player.flip_h = true
+		if direction != 0:
+			player.flip_h = (direction == -1 )
 		
 		
-	velocity.x = direction * speed
+		velocity.x = direction * speed
 		
 	move_and_slide()
 	update_animations(direction)
 
+func set_active(player_active : bool):
+	active = player_active
+	if not active:
+		velocity = Vector2.ZERO
+	
 func jump(force):
 	velocity.y = -force
 

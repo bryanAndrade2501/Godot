@@ -83,6 +83,9 @@ size = Vector2(28, 20)
 size = Vector2(72.9716, 20)
 
 [node name="ExitArea" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_vdig8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
