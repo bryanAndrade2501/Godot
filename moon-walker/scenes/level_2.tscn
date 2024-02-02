@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cae68vnysdgvn"]
+[gd_scene load_steps=11 format=3 uid="uid://cae68vnysdgvn"]
 
 [ext_resource type="PackedScene" uid="uid://v7dvu4kda1hq" path="res://scenes/player.tscn" id="1_bumgh"]
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_o1bjq"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dbmjrxxkr7xn8" path="res://scenes/deathzone.tscn" id="3_21o4j"]
 [ext_resource type="PackedScene" uid="uid://cp0cjo8mutb8n" path="res://scenes/background.tscn" id="4_rgtqx"]
 [ext_resource type="PackedScene" uid="uid://did5wo5i1j6vv" path="res://scenes/exit_area.tscn" id="7_ql5fm"]
+[ext_resource type="PackedScene" uid="uid://dy0tgwfsc16s8" path="res://scenes/saw.tscn" id="8_yfltp"]
+[ext_resource type="PackedScene" uid="uid://3t2hoxiou2ue" path="res://scenes/spike_ball.tscn" id="9_6622q"]
+[ext_resource type="PackedScene" uid="uid://cp2e0v66io6x" path="res://scenes/ui_layer.tscn" id="10_vq2kg"]
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_o1bjq")
@@ -29,3 +32,13 @@ scale = Vector2(31.08, 1)
 
 [node name="ExitArea" parent="." instance=ExtResource("7_ql5fm")]
 position = Vector2(451, 39)
+
+[node name="traps" type="Node2D" parent="."]
+
+[node name="Saw" parent="traps" instance=ExtResource("8_yfltp")]
+position = Vector2(-143, 43)
+
+[node name="SpikeBall" parent="traps" instance=ExtResource("9_6622q")]
+position = Vector2(117, 39)
+
+[node name="UILayer" parent="." instance=ExtResource("10_vq2kg")]

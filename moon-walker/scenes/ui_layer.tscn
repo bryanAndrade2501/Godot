@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp2e0v66io6x"]
+
+[ext_resource type="Script" path="res://scripts/ui_layer.gd" id="1_sew4v"]
+[ext_resource type="PackedScene" uid="uid://bu36i8bby5yg8" path="res://scenes/win_screen.tscn" id="2_bt1md"]
+
+[node name="UILayer" type="CanvasLayer"]
+script = ExtResource("1_sew4v")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Time: 9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinScreen" parent="." instance=ExtResource("2_bt1md")]
+visible = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv6wekth8msxw"]
+[gd_scene load_steps=14 format=3 uid="uid://bv6wekth8msxw"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_adt2g"]
 [ext_resource type="PackedScene" uid="uid://cae68vnysdgvn" path="res://scenes/level_2.tscn" id="2_jipc1"]
 [ext_resource type="PackedScene" uid="uid://v7dvu4kda1hq" path="res://scenes/player.tscn" id="2_nu48x"]
 [ext_resource type="PackedScene" uid="uid://dbmjrxxkr7xn8" path="res://scenes/deathzone.tscn" id="4_4xuum"]
+[ext_resource type="PackedScene" uid="uid://cp2e0v66io6x" path="res://scenes/ui_layer.tscn" id="4_dmb26"]
 [ext_resource type="PackedScene" uid="uid://biq37xm6mqcac" path="res://scenes/jump_pad.tscn" id="5_6pp3c"]
 [ext_resource type="PackedScene" uid="uid://dy0tgwfsc16s8" path="res://scenes/saw.tscn" id="6_woxpu"]
 [ext_resource type="PackedScene" uid="uid://3t2hoxiou2ue" path="res://scenes/spike_ball.tscn" id="7_0vgix"]
@@ -18,6 +19,8 @@ script = ExtResource("1_adt2g")
 next_level = ExtResource("2_jipc1")
 
 [node name="Background" parent="." instance=ExtResource("8_l2d23")]
+
+[node name="UILayer" parent="." instance=ExtResource("4_dmb26")]
 
 [node name="ExitArea" parent="." instance=ExtResource("11_es3t0")]
 position = Vector2(589, -103)
